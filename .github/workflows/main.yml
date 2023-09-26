@@ -1,0 +1,175 @@
+mport java.util.Scanner;
+public class Calculator3 {
+    public static void main(String[] args) throws Exception {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Введите пример с двумя оперантами (арабские или римские цифры)");
+        String line = sc.nextLine();
+        String[] actions = line.split(" ", 0);
+        if (line.length() <= 1)
+            throw new Exception("throws Exception //т.к. строка не является математической операцией");
+        String a = actions[0];
+        String op = actions[1];
+        String b = actions[2];
+        boolean bul = true;
+        if (line.length() > 7)
+            throw new Exception("throws Exception //т.к. формат математической операции не удовлетворяет заданию - два операнда и один оператор (+, -, /, *)");
+
+        char oper = op.charAt(0);
+        System.out.println(parseStrToInt(a));
+        if (parseStrToInt(a) != 0 && parseStrToInt(b) != 0) {
+            int a3 = parseStrToInt(a);
+            int b3 = parseStrToInt(b);
+            int x;
+             if ((0 <= a3) && (a3 <= 10))  {
+                if ((0 <= b3) && (b3 <= 10)) {
+                    switch (oper) {
+                        case '+':
+                            x = a3 + b3;
+                            System.out.println(x);
+                        case '-':
+                            x = a3 - b3;
+                            System.out.println(x);
+                        case '*':
+                            x = a3 * b3;
+                            System.out.println(x);
+                        case '/':
+                            x = a3 / b3;
+                            System.out.println(x);
+                        default:
+                            ;
+                    }
+
+                } else throw new Exception("throws Exception //т.к. введенные числа вне диапазона от 0 до 10");
+            } else throw new Exception("throws Exception //т.к. введенные числа вне диапазона от 0 до 10");
+
+
+        } else if (parseStrToInt(a) == 0 && parseStrToInt(b) == 0) {
+            int a3 = parseRimToArab(a);
+            int b3 = parseRimToArab(b);
+            int x;
+                while (a3 > b3)
+                    switch (oper) {
+                        case '+':
+                        x = a3 + b3;
+                         return x;
+                        case '-':
+                            x = a3 - b3;
+                            return x;
+                        case '*':
+                            x = a3 * b3;
+                            return x;
+                        case '/':
+                             x = a3 / b3;
+                                return x;
+                        default: {
+                             ;
+                         }
+
+                while ((a3 < b3)) throw new Exception("throws Exception //т.к. в римской системе нет отрицательных чисел");
+
+                System.out.println(parseArabToRim(x));
+                /*switch (x) {
+                    case 1:
+                        System.out.print("I");
+                        break;
+                    case 2:
+                        System.out.print("II");
+                        break;
+                    case 3:
+                        System.out.print("III ");
+                        break;
+                    case 4:
+                        System.out.print("IV ");
+                        break;
+                    case 5:
+                        System.out.print("V ");
+                        break;
+                    case 6:
+                        System.out.print("VI ");
+                        break;
+                    case 7:
+                        System.out.print("VII ");
+                        break;
+                    case 8:
+                        System.out.print("VIII ");
+                        break;
+                    case 9:
+                        System.out.print("IX ");
+                        break;
+                    case 10:
+                        System.out.print("X ");
+                        break;
+                    default:
+                        throw new Exception("throws Exception //т.к. в римской системе нет отрицательных чисел");*/
+                }
+
+            } else
+
+            throw new Exception("throws Exception //т.к. используются одновременно разные системы счисления");
+
+        }}
+
+
+
+            static int parseStrToInt(String str) {
+            String str;
+            if (str.matches("\\d+")) {
+                return Integer.parseInt(str);
+            } else {
+                return 0;
+            }
+        }
+
+            static int parseRimToArab(String str) {
+                int c3;
+                String str;
+                if (str == "I") {
+                    c3 = 1;
+                } else if (str == "II") {
+                    c3 = 2;
+                } else if (str == "III") {
+                    c3 = 3;
+                } else if (str == "IV") {
+                    c3 = 4;
+                } else if (str == "V") {
+                    c3 = 5;
+                } else if (str == "VI") {
+                    c3 = 6;
+                } else if (str == "VII") {
+                    c3 = 7;
+                } else if (str == "VIII") {
+                    c3 = 8;
+                } else if (str == "IX") {
+                    c3 = 9;
+                } else (str == "X") {
+                    c3 = 10;
+                }
+            }
+
+            static String parseArabToRim(int q) {
+                int q;
+                String c3;
+
+                if (q == 1) {
+                    c3 = "I";
+                } else if (q == 2) {
+                    c3 = "II";
+                } else if (q == 3) {
+                    c3 = "III";
+                } else if (q == 4) {
+                    c3 = "IV";
+                } else if (q == 5) {
+                    c3 = "V";
+                } else if (q == 6) {
+                    c3 = "VI";
+                } else if (q == 7) {
+                    c3 = "VII";
+                } else if (q == 8) {
+                    c3 = "VIII";
+                } else if (q == 9) {
+                    c3 = "9";
+                } else if (q == 10) {
+                    c3 = "X";
+                } else throw new Exception("throws Exception //т.к. в римской системе нет отрицательных чисел");
+            }
+        }
