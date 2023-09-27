@@ -14,7 +14,7 @@ public class Calculator6 {
         String b = actions[2];
         if (line.length() > 8)
             throw new Exception("throws Exception //т.к. формат математической операции не удовлетворяет заданию - два операнда и один оператор (+, -, /, *)");
-
+        if (op.equals("/") && b.equals("0")) { throw new Exception("на ноль делить нельзя");}
         char oper = op.charAt(0);
 
         if (parseStrToInt(a) != 0 && parseStrToInt(b) != 0) {
@@ -127,7 +127,9 @@ public class Calculator6 {
         return c3;
     }
 
-    static void parseArabToRim(int q) {
+    static void parseArabToRim(int q) throws Exception {
+        if (q < 0)  { throw new Exception("throws Exception //т.к. в римской системе нет отрицательных чисел");
+        }
         switch (q) {
             case (1):
                 System.out.println("I");
@@ -159,9 +161,12 @@ public class Calculator6 {
                 break;
             case (10):
                 System.out.println("X");
+            case (0) :
+                System.out.println(0);
                 break;
-            default:
-                System.out.println("throws Exception //т.к. в римской системе нет отрицательных чисел");
+            default: {
+
+                        System.out.println(q); }
         }
     }
 }
