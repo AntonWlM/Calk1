@@ -6,17 +6,15 @@ public class Calculator6 {
         System.out.println("Введите пример с двумя оперантами (арабские или римские цифры)");
         String line = sc.nextLine();
         String[] actions = line.split(" ", 0);
-        if (line.length() <= 1) {
+        if (actions.length <= 2)
             throw new Exception("throws Exception //т.к. строка не является математической операцией");
-        }
         String a = actions[0];
         String op = actions[1];
         String b = actions[2];
-        if (line.length() > 8)
+        if (actions.length > 3)
             throw new Exception("throws Exception //т.к. формат математической операции не удовлетворяет заданию - два операнда и один оператор (+, -, /, *)");
         if (op.equals("/") && b.equals("0")) { throw new Exception("на ноль делить нельзя");}
         char oper = op.charAt(0);
-
         if (parseStrToInt(a) != 0 && parseStrToInt(b) != 0) {
             int a3 = parseStrToInt(a);
             int b3 = parseStrToInt(b);
@@ -43,14 +41,10 @@ public class Calculator6 {
                             default: {
                                 throw new Exception("throws Exception //т.к.строка не является математической операцией");
                             }
-
                         }
-
                     } else throw new Exception("throws Exception //т.к. введенные числа вне диапазона от 0 до 10");
                 } else throw new Exception("throws Exception //т.к. введенные числа вне диапазона от 0 до 10");
             }
-
-
         } else if (parseStrToInt(a) == 0 && parseStrToInt(b) == 0) {
             int a3 = parseRimToArab(a);
             int b3 = parseRimToArab(b);
@@ -73,17 +67,12 @@ public class Calculator6 {
                     x = a3 / b3;
                     parseArabToRim(x);
                     break;
-                default:
+                default: throw new Exception("throws Exception //т.к.строка не является математической операцией");
             }
-
-
         } else {
             throw new Exception("throws Exception //т.к. используются одновременно разные системы счисления");
         }
-
-
     }
-
     static int parseStrToInt(String str) {
         if (str.matches("\\d+")) {
             return Integer.parseInt(str);
@@ -91,7 +80,6 @@ public class Calculator6 {
             return 0;
         }
     }
-
     static int parseRimToArab(String str) throws Exception {
         int c3 = 0;
 
@@ -126,16 +114,13 @@ public class Calculator6 {
             c3 = 10;
             return c3;
         } else throw new Exception("throws Exception //т.к. введенные числа вне диапазона от I до X");
-
     }
-
     static void parseArabToRim(int q) throws Exception {
         if (q < 0)  { throw new Exception("throws Exception //т.к. в римской системе нет отрицательных чисел");
         }
         switch (q) {
             case (1):
                 System.out.println("I");
-                ;
                 break;
             case (2):
                 System.out.println("II");
@@ -163,9 +148,7 @@ public class Calculator6 {
                 break;
             case (10):
                 System.out.println("X");
-            case (0) :
-                System.out.println("Результат вне диапазона возможных значений римских цифр");
-                break;
+            case (0) :  throw new Exception("Результат вне диапазона возможных значений римских цифр");
             case (11):
                 System.out.println("XI");
                 break;
@@ -228,7 +211,7 @@ public class Calculator6 {
             case (40):
                 System.out.println("XL");
             case (42):
-                System.out.println("IXL");
+                System.out.println("XLII");
                 break;
             case (45):
                 System.out.println("XLV");
@@ -256,6 +239,7 @@ public class Calculator6 {
                 break;
             case (64):
                 System.out.println("LXIV");
+                break;
             case (70):
                 System.out.println("LXX");
                 break;
@@ -273,9 +257,8 @@ public class Calculator6 {
                 break;
             case (100):
                 System.out.println("C");
-
+                break;
             default: {
-
                         System.out.println(q); }
         }
     }
