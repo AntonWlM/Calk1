@@ -82,7 +82,6 @@ public class Calculator6 {
     }
     static int parseRimToArab(String str) throws Exception {
         int c3 = 0;
-
         if (str.equals("I")) {
             c3 = 1;
             return c3;
