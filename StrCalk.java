@@ -18,7 +18,7 @@ public class StrCalk {
                 throw new RuntimeException(("операция должна начинаться со строки"));
             }
             if ((scline.contains("*") || scline.contains("/")) && scline.endsWith("\"")) {
-                throw new RuntimeException("нельзя делить или умножать на строку");
+                throw new RuntimeException("введена некорректная строка");
             }
             String[] ords = scline.split("\" ", 0);
             if (ords.length <= 1) {
